@@ -1,0 +1,53 @@
+/* main styles */
+body {
+    color: #fff;
+    background-color: #000;
+    font-family: Arial;
+}
+
+.grid {
+    align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+.fullImage,
+.previewImage {
+    border: 5px solid #fff;
+}
+
+.previewImage {
+    cursor: pointer;
+    margin: 5px;
+}
+
+/* lighbox styles */
+.lightbox {
+    background-color: rgba(200, 200, 200, 0.9);
+    color: #333;
+    display: none;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.show {
+    display: flex;
+    justify-content:center;
+}
+
+.imageDescription,
+.imageNavigation {
+    text-align: center;
+}
+
+.lightboxFigure {
+    margin: 5vh 0 0;
+}
+
+.fullImage {
+    height: 80vh;
+}

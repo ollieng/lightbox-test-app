@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <title>Image Grid and Lightbox View</title>
+    <link rel="stylesheet" type="text/css" href="lightbox.css">
+</head>
+<body>
+<main>
+    <header>
+        <h1 class="title">Photo Album</h1>
+        <p class="instructions">Click on an image to view a larger version</p>
+    </header>
+    <section id="imageGrid" class="grid"></section>
+</main>
+<div id="lightbox" class="lightbox">
+    <div class="imageDetails">
+        <figure class="lightboxFigure">
+            <div class="imageContainer" id="imageContainer"></div>
+            <figcaption class="imageDescription" id="imageDescription"></figcaption>
+        </figure>
+        <div class="imageNavigation">
+            <button class="previous">&lt;&lt; Previous</button>
+            <span id="imageIndex"></span> of <span id="imageTotal"></span>
+            <button class="next">Next &gt;&gt;</button>
+        </div>
+    </div>
+</div>
+<script src="lightbox.js"></script>
+</body>
+</html>
