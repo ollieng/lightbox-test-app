@@ -79,7 +79,7 @@ function getImages() {
 			}
 		};
 		request.onerror = function() {
-			reject(Error('Something went horribly wrong.'));
+			reject(Error('Something went wrong with your request.'));
 		};
 
 		request.send();
@@ -168,12 +168,19 @@ function init() {
 
 	getImages()
 		.then(({ photoset }) => {
-			imageList = photoset.photo;
-			document.getElementById('imageTotal').innerText = imageList.length;
-			buildGrid();
+			if (photoset) {
+				imageList = photoset.photo;
+				document.getElementById('imageTotal').innerText = imageList.length;
+				buildGrid();
+			} else {
+				alert("Something went wrong with your request.");
+				// Clear sessionStorage for the case that the endpoint is bad.
+				sessionStorage.clear();
+			}
 		})
 		.catch(err => {
-			console.log(err.message);
+			alert(err.message);
+			sessionStorage.clear();
 		});
 }
 
