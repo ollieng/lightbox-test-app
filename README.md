@@ -1,5 +1,5 @@
 # lightbox-test-app
-Display photos and lightbox for photo details
+Display photo thumbnails and lightbox for enlarged photo and title.
 
 This app uses the https://www.flickr.com/services/api/explore/flickr.photosets.getPhotos API to fetch a photoset from a given photoset id.
 
