@@ -126,19 +126,19 @@ function init() {
 	const imageGrid = document.getElementById('imageGrid');
 	const lightbox = document.getElementById('lightbox');
 
-	imageGrid.addEventListener('click', () => {
+	imageGrid.addEventListener('click', event => {
 		if (event.target.classList.contains('previewImage')) {
 			showLightbox(event.target.dataset.imageId);
 		}
 	});
 
-	imageGrid.addEventListener('keyup', () => {
-		if (event.target.classList.contains('previewImage') && (event.key === 'Enter')) {
+	imageGrid.addEventListener('keyup', event => {
+		if (event.target.classList.contains('previewImage') && (event.which === 13)) {
 			showLightbox(event.target.dataset.imageId);
 		}
 	});
 
-	lightbox.addEventListener('click', () => {
+	lightbox.addEventListener('click', event => {
 		if (event.target.classList.contains('closeButton')) {
 			lightbox.classList.remove('show');
 		}
@@ -152,16 +152,16 @@ function init() {
 		}
 	});
 
-	document.body.addEventListener('keyup', () => {
-		if (event.key === 'Escape') {  // esc
+	document.body.addEventListener('keyup', event => {
+		if (event.which === 27) {  // esc
 			lightbox.classList.remove('show');
 		}
 
-		if (event.key === 'ArrowLeft') {  // left
+		if (event.which === 37) {  // left
 			getNextImage();
 		}
 
-		if (event.key === 'ArrowRight') {  // right
+		if (event.which === 39) {  // right
 			getPreviousImage();
 		}
 	});
