@@ -1,8 +1,12 @@
 let imageList;
 let currentIndex;
 
+/**
+ * Populate the album page, using the collection from the api call
+ */
 function buildGrid() {
 	const listContainer = document.getElementById('imageGrid');
+	const subContainer = document.createElement('div');
 
 	imageList.forEach(image => {
 		const imageContainer = document.createElement('div');
@@ -10,10 +14,18 @@ function buildGrid() {
 		imageContainer.class = 'imageContainer';
 		imageContainer.innerHTML = buildImageTag(image, false);
 
-		listContainer.appendChild(imageContainer);
+		subContainer.appendChild(imageContainer);
 	});
+
+	listContainer.innerHTML = subContainer.innerHTML;
 }
 
+/**
+ * Use the properties of the image object to populate the attributes
+ * of the image tag.
+ * @param {object} image - An object which contains an image's properties.
+ * @param {boolean} isLarge - Flag which indicates which size image to show.
+ */
 function buildImageTag(image, isLarge) {
 	const imgSize = isLarge ? 'b' : 'n';
 	const className = isLarge ? 'fullImage' : 'previewImage';
@@ -42,10 +54,17 @@ function getPreviousImage() {
 	setFullImage(currentIndex);
 }
 
+/**
+ * Prompt for an API endpoint for the user and return a promise with
+ * the result of the call.
+ */
 function getImages() {
-	// const apiEndpoint = 'https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=df8ff6da229b290a5c247cdb1bd0004d&photoset_id=72157625123508939&format=json&nojsoncallback=1';
+	// This line is for testing locally without having to prompt on reload.
+	// const apiEndpoint = 'https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=9151ac60f732b1e91528416d37751133&photoset_id=72157625123508939&format=json&nojsoncallback=1';
 
-	const apiEndpoint  = prompt("Please enter the url provided in https://www.flickr.com/services/api/explore/flickr.photosets.getPhotos");
+	// Prompt for url from https://www.flickr.com/services/api/explore/flickr.photosets.getPhotos
+	// Possibly use sessionStorage so as not to have to prompt on reload.
+	const apiEndpoint  = prompt("Please enter the url provided in https://www.flickr.com/services/api/explore/flickr.photosets.getPhotos (You can use photoset_id=72157625123508939");
 
 	return new Promise(function(resolve, reject) {
 		const request = new XMLHttpRequest();
@@ -66,6 +85,10 @@ function getImages() {
 	});
 }
 
+/**
+ * Populate the lightbox description and index for display on the page.
+ * @param {number} imageIndex - An index of the imageList array.
+ */
 function setFullImage(imageIndex) {
 	const imageContainer = document.getElementById('imageContainer');
 	const imageTitleContainer = document.getElementById('imageDescription');
@@ -77,6 +100,10 @@ function setFullImage(imageIndex) {
 	imageIndexContainer.innerText = imageIndex + 1;
 }
 
+/**
+ * Find the image in the imageList collection
+ * @param {number} imageId - An id to match against the images' id's.
+ */
 function showLightbox(imageId) {
 	const lightbox = document.getElementById('lightbox');
 
@@ -90,6 +117,10 @@ function showLightbox(imageId) {
 	lightbox.classList.add('show');
 }
 
+/**
+ * Add all the event listeners to the document
+ * Make the API call and populate imageList
+ */
 function init() {
 	const imageGrid = document.getElementById('imageGrid');
 	const lightbox = document.getElementById('lightbox');
@@ -107,7 +138,7 @@ function init() {
 	});
 
 	lightbox.addEventListener('click', () => {
-		if (event.target.classList.contains('fullImage')) {
+		if (event.target.id === 'closeLightbox') {
 			lightbox.classList.remove('show');
 		}
 
@@ -145,5 +176,4 @@ function init() {
 		});
 }
 
-// Use 72157625123508939 for photoset id
 init();

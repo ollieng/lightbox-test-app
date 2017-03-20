@@ -46,8 +46,26 @@ body {
 
 .lightboxFigure {
     margin: 5vh 0 0;
+    position: relative;
+}
+
+.closeButton {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 700;
+    position: absolute;
+    right: 5px;
+    top: 5px;
 }
 
 .fullImage {
     height: 80vh;
+}
+
+.srOnly {
+    position: absolute;
+    text-indent: -9999px;
 }
