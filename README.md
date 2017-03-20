@@ -13,3 +13,4 @@ Notes:
 * Thumbnails are keyboard navigable by tabbing through each.
 * When the lightbox is up, the left and right arrow keys can be used to navigate, and the esc key can be used to close the lightbox.
 * sessionStorage is used to cache the API URL to prevent the prompt from coming up again until the browser window is closed.
+* Firefox on OSX requires that System Preferences -> Keyboard -> Shortcuts -> Full Keyboard Access be set to "All controls" to enable navigation.
