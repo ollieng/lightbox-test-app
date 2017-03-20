@@ -59,12 +59,13 @@ function getPreviousImage() {
  * the result of the call.
  */
 function getImages() {
-	// This line is for testing locally without having to prompt on reload.
-	// const apiEndpoint = 'https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=9151ac60f732b1e91528416d37751133&photoset_id=72157625123508939&format=json&nojsoncallback=1';
+	let apiEndpoint = sessionStorage.getItem('apiEndpoint');
 
-	// Prompt for url from https://www.flickr.com/services/api/explore/flickr.photosets.getPhotos
-	// Possibly use sessionStorage so as not to have to prompt on reload.
-	const apiEndpoint  = prompt("Please enter the url provided in https://www.flickr.com/services/api/explore/flickr.photosets.getPhotos (You can use photoset_id=72157625123508939");
+	if (!apiEndpoint) {
+		apiEndpoint = prompt("Please enter the url provided in https://www.flickr.com/services/api/explore/flickr.photosets.getPhotos (You can use photoset_id=72157625123508939");
+	}
+
+	sessionStorage.setItem('apiEndpoint', apiEndpoint);
 
 	return new Promise(function(resolve, reject) {
 		const request = new XMLHttpRequest();
