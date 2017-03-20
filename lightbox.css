@@ -22,8 +22,9 @@ body {
     margin: 5px;
     height: 100px;
 }
+/* end main styles */
 
-/* lighbox styles */
+/* lightbox styles */
 .lightbox {
     background-color: rgba(200, 200, 200, 0.9);
     color: #333;
@@ -65,7 +66,9 @@ body {
 .fullImage {
     height: 80vh;
 }
+/* end lightbox styles */
 
+/* text meant only for screen readers */
 .srOnly {
     position: absolute;
     text-indent: -9999px;
