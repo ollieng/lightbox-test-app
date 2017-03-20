@@ -70,6 +70,8 @@ body {
 
 /* text meant only for screen readers */
 .srOnly {
+    overflow: hidden;
     position: absolute;
     text-indent: -9999px;
+    width: 1px;
 }

@@ -139,7 +139,7 @@ function init() {
 	});
 
 	lightbox.addEventListener('click', () => {
-		if (event.target.id === 'closeLightbox') {
+		if (event.target.classList.contains('closeButton')) {
 			lightbox.classList.remove('show');
 		}
 
